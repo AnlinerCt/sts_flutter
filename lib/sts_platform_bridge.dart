@@ -84,12 +84,12 @@ class StsPlatformBridge {
     return await _methodChannel.invokeMethod("isLocalCertExist");
   }
 
-  static Future<Map<String, dynamic>> get checkCert async {
-    return await _methodChannel.invokeMapMethod("checkCert");
+  static Future<String> get checkCert async {
+    return await _methodChannel.invokeMethod("checkCert");
   }
 
-  static Future<Map<String, dynamic>> get clearCert async {
-    return await _methodChannel.invokeMapMethod("clearCert");
+  static Future<String> get clearCert async {
+    return await _methodChannel.invokeMethod("clearCert");
   }
 
   static Future<String> applyPersonalCert(
@@ -108,8 +108,8 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> get getUntieEquipmentQRcode async {
-    return await _methodChannel.invokeMapMethod("getUntieEquipmentQRcode");
+  static Future<String> get getUntieEquipmentQRCode async {
+    return await _methodChannel.invokeMethod("getUntieEquipmentQRCode");
   }
 
   static Future<String> untieEquipment(
@@ -121,65 +121,65 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> updatePersonalCert(
+  static Future<String> updatePersonalCert(
       String stsUserInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("updatePersonalCert", {
+    return await _methodChannel.invokeMethod("updatePersonalCert", {
       "stsUserInfo": stsUserInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> updateCompanyCert(
+  static Future<String> updateCompanyCert(
       String stsCompanyInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("updateCompanyCert", {
+    return await _methodChannel.invokeMethod("updateCompanyCert", {
       "stsCompanyInfo": stsCompanyInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> resetPersonalPIN(
+  static Future<String> resetPersonalPIN(
       String stsUserInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("resetPersonalPIN", {
+    return await _methodChannel.invokeMethod("resetPersonalPIN", {
       "stsUserInfo": stsUserInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> resetCompanyPIN(
+  static Future<String> resetCompanyPIN(
       String stsCompanyInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("resetCompanyPIN", {
+    return await _methodChannel.invokeMethod("resetCompanyPIN", {
       "stsCompanyInfo": stsCompanyInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> get modifyPIN async {
-    return await _methodChannel.invokeMapMethod("modifyPIN");
+  static Future<String> get modifyPIN async {
+    return await _methodChannel.invokeMethod("modifyPIN");
   }
 
-  static Future<Map<String, dynamic>> scanLogin(
+  static Future<String> scanLogin(
       String stsScanInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("scanLogin", {
+    return await _methodChannel.invokeMethod("scanLogin", {
       "stsScanInfo": stsScanInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> scanSign(
+  static Future<String> scanSign(
       String stsScanInfo,
   ) async {
-    return await _methodChannel.invokeMapMethod("scanSign", {
+    return await _methodChannel.invokeMethod("scanSign", {
       "stsScanInfo": stsScanInfo,
     });
   }
 
-  static Future<Map<String, dynamic>> certLogin(
+  static Future<String> certLogin(
     String data,
     String dataFormat,
     String dataType,
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("certLogin", {
+    return await _methodChannel.invokeMethod("certLogin", {
       "data": data,
       "dataFormat": dataFormat,
       "dataType": dataType,
@@ -187,21 +187,21 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> certSeal(
+  static Future<String> certSeal(
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("certSeal", {
+    return await _methodChannel.invokeMethod("certSeal", {
       "pn": pn,
     });
   }
 
-  static Future<Map<String, dynamic>> certSign(
+  static Future<String> certSign(
     String data,
     String dataFormat,
     String dataType,
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("certSign", {
+    return await _methodChannel.invokeMethod("certSign", {
       "data": data,
       "dataFormat": dataFormat,
       "dataType": dataType,
@@ -209,13 +209,13 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> certVerifySign(
+  static Future<String> certVerifySign(
     String data,
     String dataFormat,
     String signData,
     String dataType,
   ) async {
-    return await _methodChannel.invokeMapMethod("certVerifySign", {
+    return await _methodChannel.invokeMethod("certVerifySign", {
       "data": data,
       "dataFormat": dataFormat,
       "signData": signData,
@@ -223,25 +223,25 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> certEncrypt(
+  static Future<String> certEncrypt(
     String data,
     String dataFormat,
     String dataType,
   ) async {
-    return await _methodChannel.invokeMapMethod("certEncrypt", {
+    return await _methodChannel.invokeMethod("certEncrypt", {
       "data": data,
       "dataFormat": dataFormat,
       "dataType": dataType,
     });
   }
 
-  static Future<Map<String, dynamic>> certDecrypt(
+  static Future<String> certDecrypt(
     String data,
     String dataFormat,
     String dataType,
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("certDecrypt", {
+    return await _methodChannel.invokeMethod("certDecrypt", {
       "data": data,
       "dataFormat": dataFormat,
       "dataType": dataType,
@@ -249,30 +249,30 @@ class StsPlatformBridge {
     });
   }
 
-  static Future<Map<String, dynamic>> changeCertStatus(
+  static Future<String> changeCertStatus(
       int statusType,
   ) async {
-    return await _methodChannel.invokeMapMethod("changeCertStatus", {
+    return await _methodChannel.invokeMethod("changeCertStatus", {
       "statusType": statusType,
     });
   }
 
-  static Future<Map<String, dynamic>> get postponeCert async {
-    return await _methodChannel.invokeMapMethod("postponeCert");
+  static Future<String> get postponeCert async {
+    return await _methodChannel.invokeMethod("postponeCert");
   }
 
-  static Future<Map<String, dynamic>> setPKCacheTime(
+  static Future<String> setPKCacheTime(
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("setPKCacheTime", {
+    return await _methodChannel.invokeMethod("setPKCacheTime", {
       "pn": pn,
     });
   }
 
-  static Future<Map<String, dynamic>> clearPKCacheTime(
+  static Future<String> clearPKCacheTime(
     String pn,
   ) async {
-    return await _methodChannel.invokeMapMethod("clearPKCacheTime", {
+    return await _methodChannel.invokeMethod("clearPKCacheTime", {
       "pn": pn,
     });
   }
@@ -349,7 +349,7 @@ class StsPlatformBridge {
     return _methodChannel.invokeMethod("getFingerprintStatus");
   }
 
-  static Future<Map<String, dynamic>> openFingerprint(bool open) async {
-    return await _methodChannel.invokeMapMethod("openFingerprint", {"open": open});
+  static Future<String> openFingerprint(bool open) async {
+    return await _methodChannel.invokeMethod("openFingerprint", {"open": open});
   }
 }

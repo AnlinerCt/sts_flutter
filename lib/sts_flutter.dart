@@ -96,13 +96,13 @@ class StsFlutter {
   }
 
   static Future<CommonResult> get checkCert async {
-    Map<String, dynamic> map = await StsPlatformBridge.checkCert;
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.checkCert;
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> get clearCert async {
-    Map<String, dynamic> map = await StsPlatformBridge.clearCert;
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.clearCert;
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<ApplyCertResult> applyPersonalCert(StsUserInfo stsUserInfo) async {
@@ -121,9 +121,9 @@ class StsFlutter {
     return ApplyCertResult.fromJson(json.decode(jsonStr));
   }
 
-  static Future<GetQRCodeResult> get getUntieEquipmentQRcode async {
-    Map<String, dynamic> map = await StsPlatformBridge.getUntieEquipmentQRcode;
-    return GetQRCodeResult.fromJson(map);
+  static Future<GetQRCodeResult> get getUntieEquipmentQRCode async {
+    String jsonStr = await StsPlatformBridge.getUntieEquipmentQRCode;
+    return GetQRCodeResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<ApplyCertResult> untieEquipment(String qrData) async {
@@ -133,93 +133,93 @@ class StsFlutter {
 
   static Future<CommonResult> updatePersonalCert(StsUserInfo stsUserInfo) async {
     if (stsUserInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.updatePersonalCert(json.encode(stsUserInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.updatePersonalCert(json.encode(stsUserInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> updateCompanyCert(StsCompanyInfo stsCompanyInfo) async {
     if (stsCompanyInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.updateCompanyCert(json.encode(stsCompanyInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.updateCompanyCert(json.encode(stsCompanyInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> resetPersonalPIN(StsUserInfo stsUserInfo) async {
     if (stsUserInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.resetPersonalPIN(json.encode(stsUserInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.resetPersonalPIN(json.encode(stsUserInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> resetCompanyPIN(StsCompanyInfo stsCompanyInfo) async {
     if (stsCompanyInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.resetCompanyPIN(json.encode(stsCompanyInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.resetCompanyPIN(json.encode(stsCompanyInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> get modifyPIN async {
-    Map<String, dynamic> map = await StsPlatformBridge.modifyPIN;
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.modifyPIN;
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> scanLogin(StsScanInfo stsScanInfo) async {
     if (stsScanInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.scanLogin(json.encode(stsScanInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.scanLogin(json.encode(stsScanInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> scanSign(StsScanInfo stsScanInfo) async {
     if (stsScanInfo == null) return CommonResult(resultCode: StsCodeTable.rtnCode_no_data, resultMsg: StsCodeTable.rtnMsg_no_data);
-    Map<String, dynamic> map = await StsPlatformBridge.scanSign(json.encode(stsScanInfo));
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.scanSign(json.encode(stsScanInfo));
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CertLoginResult> certLogin(String data, String dataFormat, String dataType, String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certLogin(data, dataFormat, dataType, pn);
-    return CertLoginResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certLogin(data, dataFormat, dataType, pn);
+    return CertLoginResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CertSealResult> certSeal(String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certSeal(pn);
-    return CertSealResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certSeal(pn);
+    return CertSealResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CertSignResult> certSign(String data, String dataFormat, String dataType, String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certSign(data, dataFormat, dataType, pn);
-    return CertSignResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certSign(data, dataFormat, dataType, pn);
+    return CertSignResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> certVerifySign(String data, String dataFormat, String signData, String dataType) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certVerifySign(data, dataFormat, signData, dataType);
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certVerifySign(data, dataFormat, signData, dataType);
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CertEncryptResult> certEncrypt(String data, String dataFormat, String dataType) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certEncrypt(data, dataFormat, dataType);
-    return CertEncryptResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certEncrypt(data, dataFormat, dataType);
+    return CertEncryptResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CertDecryptResult> certDecrypt(String data, String dataFormat, String dataType, String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.certDecrypt(data, dataFormat, dataType, pn);
-    return CertDecryptResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.certDecrypt(data, dataFormat, dataType, pn);
+    return CertDecryptResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> changeCertStatus(int statusType) async {
-    Map<String, dynamic> map = await StsPlatformBridge.changeCertStatus(statusType);
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.changeCertStatus(statusType);
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<CommonResult> get postponeCert async {
-    Map<String, dynamic> map = await StsPlatformBridge.postponeCert;
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.postponeCert;
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<PKCacheResult> setPKCacheTime(String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.setPKCacheTime(pn);
-    return PKCacheResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.setPKCacheTime(pn);
+    return PKCacheResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<PKCacheResult> clearPKCacheTime(String pn) async {
-    Map<String, dynamic> map = await StsPlatformBridge.clearPKCacheTime(pn);
-    return PKCacheResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.clearPKCacheTime(pn);
+    return PKCacheResult.fromJson(json.decode(jsonStr));
   }
 
   static Future<GetCertResult> getCert(int certType) async {
@@ -272,7 +272,7 @@ class StsFlutter {
   }
 
   static Future<CommonResult> openFingerprint(bool open) async {
-    Map<String, dynamic> map = await StsPlatformBridge.openFingerprint(open);
-    return CommonResult.fromJson(map);
+    String jsonStr = await StsPlatformBridge.openFingerprint(open);
+    return CommonResult.fromJson(json.decode(jsonStr));
   }
 }

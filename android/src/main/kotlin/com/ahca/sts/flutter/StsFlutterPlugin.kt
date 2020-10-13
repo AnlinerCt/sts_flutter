@@ -94,14 +94,11 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
           }
           "checkCert" -> {
             STShield.checkCert(activity) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "clearCert" -> {
-            channelResult.success(STShield.clearCert(activity))
+            channelResult.success(Gson().toJson(STShield.clearCert(activity)))
           }
           "applyPersonalCert" -> {
             val stsUserInfo = methodCall.argument<String>("stsUserInfo")!!
@@ -119,13 +116,9 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
               channelResult.success(Gson().toJson(it))
             }
           }
-          "getUntieEquipmentQRcode" -> {
+          "getUntieEquipmentQRCode" -> {
             STShield.getUntieEquipmentQRcode(activity) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["qrCode"] = it.qrCode
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "untieEquipment" -> {
@@ -139,10 +132,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsUserInfo, StsUserInfo::class.java)
 
             STShield.updatePersonalCert(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "updateCompanyCert" -> {
@@ -150,10 +140,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsCompanyInfo, StsCompanyInfo::class.java)
 
             STShield.updateCompanyCert(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "resetPersonalPIN" -> {
@@ -161,10 +148,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsUserInfo, StsUserInfo::class.java)
 
             STShield.resetPersonalPIN(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "resetCompanyPIN" -> {
@@ -172,18 +156,12 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsCompanyInfo, StsCompanyInfo::class.java)
 
             STShield.resetCompanyPIN(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "modifyPIN" -> {
             STShield.modifyPIN(activity) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "scanLogin" -> {
@@ -191,10 +169,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsScanInfo, StsScanInfo::class.java)
 
             STShield.scanLogin(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "scanSign" -> {
@@ -202,10 +177,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val fromJson = Gson().fromJson(stsScanInfo, StsScanInfo::class.java)
 
             STShield.scanSign(activity, fromJson) {
-              val hashMap = HashMap<String, Any?>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certLogin" -> {
@@ -215,24 +187,14 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.certLogin(activity, data, dataFormat, dataType, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["signCert"] = it.signCert
-              hashMap["signData"] = it.signData
-              hashMap["token"] = it.token
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certSeal" -> {
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.certSeal(activity, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["token"] = it.token
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certSign" -> {
@@ -242,13 +204,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.certSign(activity, data, dataFormat, dataType, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["signCert"] = it.signCert
-              hashMap["signData"] = it.signData
-              hashMap["token"] = it.token
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certVerifySign" -> {
@@ -258,10 +214,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val dataType = methodCall.argument<String>("dataType")!!
 
             STShield.certVerifySign(activity, data, dataFormat, signData, dataType) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certEncrypt" -> {
@@ -270,11 +223,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val dataType = methodCall.argument<String>("dataType")!!
 
             STShield.certEncrypt(activity, data, dataFormat, dataType) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["encryptData"] = it.encryptData
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "certDecrypt" -> {
@@ -284,51 +233,33 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.certDecrypt(activity, data, dataFormat, dataType, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["decryptData"] = it.decryptData
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "changeCertStatus" -> {
             val statusType = methodCall.argument<Int>("statusType")!!
 
             STShield.changeCertStatus(activity, statusType) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "postponeCert" -> {
             STShield.postponeCert(activity) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "setPKCacheTime" -> {
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.setPKCacheTime(activity, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["token"] = it.token
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "clearPKCacheTime" -> {
             val pn = methodCall.argument<String>("pn")!!
 
             STShield.clearPKCacheTime(activity, pn) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              hashMap["token"] = it.token
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
           "getCert" -> {
@@ -401,10 +332,7 @@ class StsFlutterPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallH
             val open = methodCall.argument<Boolean>("open")!!
 
             STShield.openFingerprint(activity, open) {
-              val hashMap = HashMap<String, Any>()
-              hashMap["resultCode"] = it.resultCode
-              hashMap["resultMsg"] = it.resultMsg
-              channelResult.success(hashMap)
+              channelResult.success(Gson().toJson(it))
             }
           }
             else -> {
