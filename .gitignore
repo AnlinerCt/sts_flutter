@@ -4,6 +4,9 @@
 
 .packages
 .pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
 
 build/
 test/
