@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -104,7 +105,7 @@ class _MyAppState extends State<LaunchActivity> {
         if (signImgResult.resultCode == StsCodeTable.rtnCode_success) {
           log("signImgResult = $signImgResult");
           log("signImgResult.signImg = ${signImgResult.signImg}");
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: signImgResult.signImg)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: base64Decode(signImgResult.signImg))));
         }
         break;
       case 2:
@@ -112,13 +113,13 @@ class _MyAppState extends State<LaunchActivity> {
         if (signImgResult.resultCode == StsCodeTable.rtnCode_success) {
           log("signImgResult = $signImgResult");
           log("signImgResult.signImg = ${signImgResult.signImg}");
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: signImgResult.signImg)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: base64Decode(signImgResult.signImg))));
         }
         break;
       case 3:
         SignImgResult signImgResult = await StsFlutter.getSignImgWithDrawingBoard(null);
         if (signImgResult.resultCode == StsCodeTable.rtnCode_success) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: signImgResult.signImg)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SignImgActivity(img: base64Decode(signImgResult.signImg))));
         }
         break;
       case 4:

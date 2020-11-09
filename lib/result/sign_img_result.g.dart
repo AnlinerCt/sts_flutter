@@ -10,7 +10,7 @@ SignImgResult _$SignImgResultFromJson(Map<String, dynamic> json) {
   return SignImgResult(
     resultCode: json['resultCode'] as int,
     resultMsg: json['resultMsg'] as String,
-    signImg: (json['signImg'] as List)?.map((e) => e as int)?.toList(),
+    signImg: json['signImg'] as String,
   );
 }
 

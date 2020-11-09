@@ -38,7 +38,7 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       style: TextStyle(fontSize: App.tffTextSize),
       maxLength: 18,
       keyboardType: TextInputType.text,
-      inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter(RegExp("[0-9xX]")), LengthLimitingTextInputFormatter(20)],
+      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp("[0-9xX]")), LengthLimitingTextInputFormatter(20)],
       onChanged: (value) {
         _idCardNum = value;
       },
@@ -49,7 +49,7 @@ class _UserInfoActivityState extends State<UserInfoActivity> {
       style: TextStyle(fontSize: App.tffTextSize),
       maxLength: 11,
       keyboardType: TextInputType.phone,
-      inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter(RegExp("[0-9]")), LengthLimitingTextInputFormatter(20)],
+      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp("[0-9]")), LengthLimitingTextInputFormatter(20)],
       onChanged: (value) {
         _phoneNum = value;
       },

@@ -17,13 +17,13 @@ StsCertInfo _$StsCertInfoFromJson(Map<String, dynamic> json) {
     version: json['version'] as String,
     subjectDN: json['subjectDN'] == null
         ? null
-        : SubjectDNBean.fromJson(Map<String, dynamic>.from(json['subjectDN'])),
+        : SubjectDNBean.fromJson(json['subjectDN'] as Map<String, dynamic>),
     issuerDN: json['issuerDN'] == null
         ? null
-        : IssuerDNBean.fromJson(Map<String, dynamic>.from(json['issuerDN'])),
+        : IssuerDNBean.fromJson(json['issuerDN'] as Map<String, dynamic>),
     subjectEXT: json['subjectEXT'] == null
         ? null
-        : SubjectEXTBean.fromJson(Map<String, dynamic>.from(json['subjectEXT'])),
+        : SubjectEXTBean.fromJson(json['subjectEXT'] as Map<String, dynamic>),
   );
 }
 

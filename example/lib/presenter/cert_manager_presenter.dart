@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:sts_flutter/model/sts_cert_info.dart';
 import 'package:sts_flutter/model/sts_user_info.dart';
@@ -37,12 +39,11 @@ class CertManagerPresenter {
     var resultCode = result.resultCode;
     ToastUtil.instance.showToast(result.resultMsg);
     if (resultCode == StsCodeTable.rtnCode_success) {
-      List<int> signImg = result.signImg;
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => SignImgActivity(
-            img: signImg,
+            img: base64Decode(result.signImg),
           ),
         ),
       );

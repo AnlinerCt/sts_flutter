@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sts_flutter_example/app.dart';
 
 class SignImgActivity extends StatefulWidget {
-  final List<int> img;
+  final Uint8List img;
 
   SignImgActivity({@required this.img});
 
@@ -19,7 +19,7 @@ class _SignImgActivityState extends State<SignImgActivity> {
       appBar: App.getAppBar("签名图片"),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        child: Image.memory(Uint8List.fromList(widget.img)),
+        child: Image.memory(widget.img),
       ),
     );
   }

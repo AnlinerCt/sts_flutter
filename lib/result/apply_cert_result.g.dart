@@ -14,13 +14,14 @@ ApplyCertResult _$ApplyCertResultFromJson(Map<String, dynamic> json) {
     signCert: json['signCert'] as String,
     stsCertInfo: json['stsCertInfo'] == null
         ? null
-        : StsCertInfo.fromJson(Map<String, dynamic>.from(json['stsCertInfo'])),
+        : StsCertInfo.fromJson(json['stsCertInfo'] as Map<String, dynamic>),
     stsUserInfo: json['stsUserInfo'] == null
         ? null
-        : StsUserInfo.fromJson(Map<String, dynamic>.from(json['stsUserInfo'])),
+        : StsUserInfo.fromJson(json['stsUserInfo'] as Map<String, dynamic>),
     stsCompanyInfo: json['stsCompanyInfo'] == null
         ? null
-        : StsCompanyInfo.fromJson(Map<String, dynamic>.from(json['stsCompanyInfo'])),
+        : StsCompanyInfo.fromJson(
+            json['stsCompanyInfo'] as Map<String, dynamic>),
   );
 }
 

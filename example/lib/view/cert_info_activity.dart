@@ -47,12 +47,15 @@ class CertInfoActivity extends StatelessWidget {
       var subtitleKeys = subtitleKeyList[i];
 
       List<Widget> cardColumnList = [];
+
       /// 卡片头部大标题
       cardColumnList.add(Container(
         width: double.infinity,
         padding: EdgeInsets.all(14.0),
         decoration: BoxDecoration(
-          color: Theme.of(context).disabledColor,
+          color: Theme
+              .of(context)
+              .disabledColor,
           borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
         ),
         child: Text(
@@ -63,11 +66,21 @@ class CertInfoActivity extends StatelessWidget {
 
       Map<String, dynamic> certInfo = certInfoJson;
       if (titleKey.length != 0) {
-        certInfo = certInfoJson[titleKey];
+        if (certInfoJson.containsKey(titleKey)) {
+          certInfo = certInfoJson[titleKey];
+        } else {
+          certInfo = null;
+        }
       }
       for (var j = 0; j < subtitles.length; j++) {
         var subtitle = subtitles[j];
-        var value = certInfo[subtitleKeys[j]];
+        var subtitleKey = subtitleKeys[j];
+        var value;
+        if (certInfo != null && certInfo.containsKey(subtitleKey)) {
+          value = certInfo[subtitleKey];
+        } else {
+          value = "";
+        }
 
         /// 卡片内容
         cardColumnList.add(Container(
@@ -82,15 +95,20 @@ class CertInfoActivity extends StatelessWidget {
               ),
               Text(
                 value,
-                style: TextStyle(color: Theme.of(context).hintColor, fontSize: App.littleTitleSize),
+                style: TextStyle(color: Theme
+                    .of(context)
+                    .hintColor, fontSize: App.littleTitleSize),
               )
             ],
           ),
         ));
+
         /// 卡片内容之间的分割线
         if (j < subtitles.length - 1)
           cardColumnList.add(Divider(
-            color: Theme.of(context).dividerColor,
+            color: Theme
+                .of(context)
+                .dividerColor,
             height: 1.0,
           ));
       }

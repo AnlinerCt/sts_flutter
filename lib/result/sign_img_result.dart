@@ -7,7 +7,7 @@ part 'sign_img_result.g.dart';
 class SignImgResult {
   int resultCode = 0;
   String resultMsg = "";
-  List<int> signImg;
+  String signImg;
 
   SignImgResult({
     @required this.resultCode,
